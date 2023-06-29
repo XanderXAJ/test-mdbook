@@ -12,6 +12,10 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v3
+        with:
+          # Minimise the amount of data that needs cloning.
+          # If you need to perform any git operations, remove this line.
+          fetch-depth: 0
       - name: Install latest mdBook
         run: |
           tag=$(curl 'https://api.github.com/repos/rust-lang/mdbook/releases/latest' | jq -r '.tag_name')
